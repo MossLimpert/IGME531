@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesselation to SVG</title>
+
+    <!-- <script type="module" src="./src/main.js"></script> -->
+    <script type="text/javascript" src="./node_modules/paper/dist/paper-full.js"></script>
+    <script type="text/paperscript" canvas="paper" src="./src/main.js"></script>
+</head>
+<body>
+    <h1>Moss Limpert - SVG</h1>
+    <canvas id="paper" width="720" height="500"></canvas>
+    <p>
+        I initially spent an hour and a half trying to get an svg add-on library working for P5.js. Now I have just looked at the actual requirements and found his suggested libraries. Continuing on from there!
+        <br><br>
+        Brief, One-Page Summary:
+        <br><br>
+        Paper.js is a library built around making vector shapes and infinitely scalable graphics. It is almost stupefyingly simple, befuddling my brain, which was trying to invent complexity where there was none. The library is well documented, and when you use npm to put it into your project, it includes a ton of helpful examples that helped me accomplish my goal (draw shapes, then expor a svg). Even though I prefer to use cdns to downloading a whole library, the extra examples and support make it worth downloading. The shortcoming I found is that you have to use var and not let? I am confused by this, but I guess it is because it is compiled in its own scope. 
+        <br><br>
+        Method Instructions:
+        <ul>
+            <li>Create basic html project</li>
+            <li>Use node package manager to install Paper.js into the directory of the project. npm install paper</li>
+            <li>Create the js file that will house my Paper drawings, and link it to my html page as script type text/paperscript</li>
+            <li>Fill my script with shapes and paths!</li>
+        </ul>
+        <br><br>
+        I created a cat! Above and below this section you can see the cat; above is the canvas version, and below is the downloadable svg. If I were to work on this further, I would use it to recreate <a href="https://www.wikiart.org/en/m-c-escher/lizard">M.C. Escher's Lizards</a> because I love lizards and reptiles.
+        <br><br>
+        Now that it is not 11pm and I can read documentation and write code clearly, I can say that this method aids creativity. I hit the learning curve head on because I have limited experience with node, but now that all the pieces are in place, I can see that this can be used to create Much more complicated designs than the one I put together this morning before class.
+
+    </p>
+    <p>References:
+        <ul>
+            <li><a href="https://www.theedkins.co.uk/jo/tess/grids.htm">https://www.theedkins.co.uk/jo/tess/grids.htm</a></li>
+            <li><a href="https://www.geogebra.org/m/CFh4ngUa">https://www.geogebra.org/m/CFh4ngUa</a></li>
+            <li><a href="https://www.wikiart.org/en/m-c-escher/lizard">M.C. Escher's Lizards</a></li>
+            <li><a href="https://github.com/zenozeng/p5.js-svg">https://github.com/zenozeng/p5.js-svg</a></li>
+            <li><a href="https://p5js.org/get-started/">https://p5js.org/get-started/</a></li>
+        </ul>
+    </p>
+</body>
+</html>

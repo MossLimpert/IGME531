@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "cleanup-dependencies": "^0.0.6",
+    "paper": "^0.12.17"
+  }
+}
