@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // can chain this because it takes the same thing it returns
+        const translateElem = (moveByVec, elem) => {
+            // g is a group like div for svg
+            return svg`
+                <g transform="translate(${moveByVec[0]} ${moveByVec[1]})">
+                    ${elem}
+                    </g> 
+            `
+        };
+
+        const rotateElem = (degrees, pointOfRotation, elem) => {
+            return svg`
+                <g transform="rotate(${degrees} ${pointOfRotation[0]} ${pointOfRotation[1]})">
+                    ${elem}
+                    </g> 
+            `
+        }
+
+        const reflectElem = (aboutPoint, elem) => {
+            // right most transformation applied first
+            return svg`
+                <g transform="translate(${aboutPoint[0]} ${aboutPoint[1]}) scale(-1 1) translate(${-aboutPoint[0]} ${aboutPoint[1]})">
+                    ${elem}
+                    </g> 
+            `
+        }
+        //const finalTile = 
+    </script>
+</body>
+</html>
