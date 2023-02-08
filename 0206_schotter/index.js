@@ -7,35 +7,12 @@ paper.setup(canvas);
 // as the loops progress, i will increase the offset
 let rotationNoise = createNoise2D();
 
+// bring in my svg
+let mySVG;
+// https://codepen.io/andywise/pen/MqxLVr?editors=1010
+paper.project.importSVG('./schotter.svg', schotter);
 
-let gridWidth = 30;        // squares will be 10x10 and right next to each other
-let radius = 20;
-let rotationOffset = 0.5;
-let positionOffset = 20;
-// 12 columns by 22 rows 
-for (let i = 0; i < 22; i++)
-{
-    
-    // we want a bunch of squares
-    for (let j = 0; j < 12; j++)
-    {
-        // setup
-        let point = new paper.Point((j * gridWidth) + positionOffset, (i * gridWidth) + positionOffset);
-        let rotation = i * rotationNoise(i,j) + (rotationNoise(i,j) * (rotationOffset * i)) * 6;
 
-        // draw
-        // args: center, sides, radius
-        let path = new paper.Path.RegularPolygon(point, 4, radius);
-        path.rotate(rotation, point);
-        path.fillColor = 'black';
-        let fill = new paper.Path.RegularPolygon(point, 4, radius - 3);
-        fill.rotate(rotation, point);
-        fill.fillColor = 'white';
-    }
-    
-}
-
-exportSVG();
 
 function exportSVG() 
 {
@@ -43,4 +20,32 @@ function exportSVG()
     let renderedImage = document.querySelector('svg');
     //renderedImage.attributes.setNamedItemNS("http://www.w3.org/2000/svg", "xmlns");
     renderedImage.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+}
+
+function schotter(svg) 
+{
+    mySVG = svg;
+
+    let gridWidth = 32;        // squares will be 10x10 and right next to each other
+    //let radius = 20;
+    let rotationOffset = 0.5;
+    let positionOffset = 20;
+    // 12 columns by 22 rows 
+    for (let i = 0; i < 22; i++)
+    {
+        // we want a bunch of squares
+        for (let j = 0; j < 12; j++)
+        {
+            // setup
+            let point = new paper.Point((j * gridWidth) + positionOffset, (i * gridWidth) + positionOffset);
+            let rotation = i * rotationNoise(i,j) + (rotationNoise(i,j) * (rotationOffset * i)) * 6;
+
+            let path = mySVG.clone();
+            path.scale(0.2);
+            path.position = point;
+            path.rotate(rotation, point);
+        }
+    }
+    mySVG.scale(0.0001);    // get rid of the big one
+    exportSVG();
 }
