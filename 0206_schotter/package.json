@@ -1,0 +1,15 @@
+{
+  "name": "schotter",
+  "version": "1.0.0",
+  "description": "Recode Schotter assignment for IGME 531",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Moss Limpert",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "paper": "^0.12.17",
+    "simplex": "^0.2.0"
+  }
+}
