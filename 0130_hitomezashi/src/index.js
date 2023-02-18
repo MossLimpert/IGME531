@@ -12,7 +12,7 @@ import { createNoise2D } from "./node_modules/simplex-noise/dist/esm/simplex-noi
 var canvas = document.querySelector("#hito");
 paper.setup(canvas);
 
-var stitchNoise = createNoise2D();
+//var stitchNoise = createNoise2D();
 
 // we need a 20x20 grid
 // starting with an offset of 25px

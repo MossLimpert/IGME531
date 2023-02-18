@@ -26,9 +26,9 @@ function schotter(svg)
 {
     mySVG = svg;
 
-    let gridWidth = 32;        // squares will be 10x10 and right next to each other
+    let gridWidth = 38;        // squares will be 10x10 and right next to each other
     //let radius = 20;
-    let rotationOffset = 0.5;
+    let rotationOffset = 0.7;
     let positionOffset = 20;
     // 12 columns by 22 rows 
     for (let i = 0; i < 22; i++)
@@ -37,11 +37,11 @@ function schotter(svg)
         for (let j = 0; j < 12; j++)
         {
             // setup
-            let point = new paper.Point((j * gridWidth) + positionOffset, (i * gridWidth) + positionOffset);
-            let rotation = i * rotationNoise(i,j) + (rotationNoise(i,j) * (rotationOffset * i)) * 6;
+            let point = new paper.Point((j * gridWidth) + positionOffset + (i * 0.5), (i * gridWidth) + positionOffset + (j * 0.7));
+            let rotation = i * rotationNoise(i,j) + (rotationNoise(i,j) * (rotationOffset * i)) * 8;
 
             let path = mySVG.clone();
-            path.scale(0.2);
+            path.scale(0.23 + (rotationNoise(i,j) * (i * 0.02)));
             path.position = point;
             path.rotate(rotation, point);
         }

@@ -1,0 +1,11 @@
+{
+  "name": "l-systems",
+  "version": "1.0.0",
+  "description": "Moss Limpert's L Systems for 531",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Moss Limpert",
+  "license": "UNLICENSED"
+}
