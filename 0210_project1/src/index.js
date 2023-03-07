@@ -22,16 +22,16 @@ paper.setup(canvas);
 let hexes = [];
 
 const loadSVG = () => {
-    paper.project.importSVG('../p1_1.svg', (svg) => {
+    paper.project.importSVG('./p1_1.svg', (svg) => {
         hexes[0] = svg;
     });
-    paper.project.importSVG('../p1_2.svg', (svg) => {
+    paper.project.importSVG('./p1_2.svg', (svg) => {
         hexes[1] = svg;
     });
-    paper.project.importSVG('../p1_3.svg', (svg) => {
+    paper.project.importSVG('./p1_3.svg', (svg) => {
         hexes[2] = svg;
     });
-    paper.project.importSVG('../p1_4.svg', (svg) => {
+    paper.project.importSVG('./p1_4.svg', (svg) => {
         hexes[3] = svg;
     });
 }
@@ -73,7 +73,7 @@ const drawHexes = () => {
             //path = paper.Path.RegularPolygon(point, 6, size);
             path.scale(0.37);
             
-            if (i % 2 == 0 && j % 2 == 0) {
+            if (j % 2 == 0) {
                 //path.rotate(240);
                 path.scale(-1);
             }
