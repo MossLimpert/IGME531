@@ -1,4 +1,4 @@
-import {serialize} from 'https://cdn.skypack.dev/@jscad/stl-serializer';
+import {serialize} from 'https://cdn.skypack.dev/@jscad/stl-serializer@alpha';
 
 // Downloads the given JSCAD model object as an STL file
 const download = (name, model) => {

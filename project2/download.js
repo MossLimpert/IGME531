@@ -2,6 +2,7 @@ import {serialize} from 'https://cdn.skypack.dev/@jscad/stl-serializer';
 
 // Downloads the given JSCAD model object as an STL file
 const download = (name, model) => {
+  debugger;
   const stlData = serialize({
     binary: false
   }, model);

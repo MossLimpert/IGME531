@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- Import openjscad -->
+  <script language="javascript" src="https://unpkg.com/@jscad/modeling"></script>
+  <script language="javascript" src="https://unpkg.com/@jscad/regl-renderer@2.6.5/dist/jscad-regl-renderer.min.js"></script>
+
+  <style>
+    #jscad{
+      width: 100vw;
+      height: 100vh;
+      margin: 10px;
+      outline: 1px solid black;
+    }
+
+    #download_container {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      padding: 10px 20px;
+    }
+
+    #download {
+      display: block;
+      width: 100%;
+      border-radius: 5px;
+      background: #eee;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+
+    /* Style the name input so it sits right above the download button, same width */
+    #name{
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id='jscad'></div>
+
+  <div id="download_container">
+    <input id="name" type="text" placeholder="Filename" />
+    <button id="download">Download STL</button>
+  </div>
+
+  <script type="module" src="./index.js"></script>
+</body>
+</html>

@@ -3,11 +3,11 @@ const { booleans, colors, primitives, transforms, maths } = jscadModeling // mod
 const { intersect, subtract, union } = booleans
 const { colorize } = colors
 const { cube, cuboid, line, sphere, star } = primitives
-const { center, rotateX, translate, rotateY } = transforms;
+const { center, rotateX, translate } = transforms;
 
 import { tube } from "./path/tube.js";
 
-const makeBranch = (startString, _iterations, _angle, _lineLength) => {
+const makeBranch = (startString, _iterations, _angle) => {
   // lindenmeyer code
   const rules = ({
     'm': '3w5',
@@ -21,9 +21,9 @@ const makeBranch = (startString, _iterations, _angle, _lineLength) => {
   const iterations = _iterations;
   const start = startString;
   const angle = _angle;
-  let startingPoint = [0, 0, -50];
+  let startingPoint = [0, 0, 0];
   let currentAngle = 360;
-  let lineLength = _lineLength;
+  let lineLength = 9;
   let points = [startingPoint];
   let stateStack = [];
 
@@ -116,10 +116,7 @@ const makeBranch = (startString, _iterations, _angle, _lineLength) => {
 
   const drawingRules = {
     'm': moveForward,
-    '3': () => {
-      moveForward();
-      push();
-    },
+    '3': moveForward,
     '0': () => {
         push();
         turnOverX();
@@ -154,36 +151,26 @@ const model = (scale) => {
   
   // create a cube
   // create lindenmeyer string
-  let points = makeBranch("m5w0", 3, 45, 40);
-  let branch2 = makeBranch("m3w", 5, 20, 1);
-  let branch3 = makeBranch("3333wmmww", 3, 100, 15);
-  let branch4 = makeBranch("m", 3, 30, 20);
-  let branch5 = makeBranch("ww", 4, 45, 80);
+  let points = makeBranch("m5w0", 5, 45);
+  let branch2 = makeBranch("m3w", 5, 20);
+  let branch3 = makeBranch("3333wmmww", 5, 100);
+  let branch4 = makeBranch("m", 8, 30);
 
   //console.log(points);
-  let system = tube({radius: 5, circumferenceSegments: 3, numSamplePoints: points.length}, points);
-  let tube2 = tube({radius: 5, circumferenceSegments: 3, numSamplePoints: branch2.length}, branch2);
-  let tube3 = tube({radius: 60, circumferenceSegments: 4, numSamplePoints: branch3.length}, branch3);
-  let tube4 = tube({radius: 5, circumferenceSegments: 3, numSamplePoints: branch4.length}, branch4);
-  //const tube5 = tube({radius: 10, circumferenceSegments: 4, numSamplePoints: branch5.length}, branch5);
-
-  system = translate([0, 0, -50], system);
-  tube2 = translate([30, 100 ,0], tube2);
-  tube3 = translate([0, 50, 0], tube3);
+  const system = tube({radius: 10, circumferenceSegments: 4, numSamplePoints: points.length}, points);
+  const tube2 = tube({radius: 10, circumferenceSegments: 4, numSamplePoints: branch2.length}, branch2);
+  const tube3 = tube({radius: 10, circumferenceSegments: 4, numSamplePoints: branch3.length}, branch3);
+  const tube4 = tube({radius: 10, circumferenceSegments: 4, numSamplePoints: branch4.length}, branch4);
+  
 
   let lsystem = union(system, tube2);
   lsystem = union(lsystem, tube3);
   lsystem = union(lsystem, tube4);
- 
-
-  lsystem = rotateY(-45, lsystem);
 
   let rect = cube({size: 200});
   lsystem = subtract(rect, lsystem);
-  //lsystem = union(lsystem, tube5);
 
-
-  lsystem = colorize([0,1,0,0.5], lsystem);
+  lsystem = colorize([0,1,0,0.2], lsystem);
   return lsystem;
 }
 
